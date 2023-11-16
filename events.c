@@ -43,5 +43,7 @@ int main(void){
   mlx_key_hook(data.win, handle_input, &data);
 
   mlx_loop(data.mlx_ptr);
-
+    mlx_clear_window(data.mlx_ptr, data.win);
+    mlx_destroy_display(data.win);
+    free(data.mlx_ptr);
 }

@@ -7,11 +7,11 @@
 #include <time.h>
 
 #define MALLOC_ERROR    1
-#define WIN_WIDTH       850
-#define WIN_HEIGHT      850
+//#define WIN_WIDTH       850
+//#define WIN_HEIGHT      850
 #define TILE_SIZE       85
-#define MAP_WIDTH       10
-#define MAP_HEIGHT      10
+#define MAP_WIDTH       28
+#define MAP_HEIGHT      14
 
 // Keycodes
 #define KEY_RIGHT       65363
@@ -39,6 +39,8 @@ typedef struct s_var
     void    *wall_img;
     void    *user_img;
     void    *game_bg;
+    void    *collectibles;
+    void    *door;
 } t_var;
 
 // Function prototypes

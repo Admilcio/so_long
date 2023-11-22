@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "MY_PIXEL_PUT.C": "cpp"
+        "MY_PIXEL_PUT.C": "cpp",
+        "stdlib.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

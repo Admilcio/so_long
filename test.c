@@ -55,6 +55,8 @@ typedef struct s_var
     void    *user_img;
 }               t_var;
 
+#include "so_long.h"
+
 void background_img(void *mlx, void *win)
 {
     void    *img;
@@ -84,7 +86,7 @@ void draw_map(t_var *vars)
             // Draw player ('P') at its current position using the user image
             if (x == vars->player_x && y == vars->player_y)
             {
-                mlx_put_image_to_window(vars->mlx, vars->win, vars->user_img, x * TILE_SIZE - 5, y * TILE_SIZE - 10);
+                mlx_put_image_to_window(vars->mlx, vars->win, vars->user_img, x * TILE_SIZE, y * TILE_SIZE);
             }
 
             else if (vars->map[y][x] == '1')
@@ -95,60 +97,21 @@ void draw_map(t_var *vars)
             // Draw collectibles ('C') at their positions in yellow
             else if (vars->map[y][x] == 'C')
             {
-                for (int i = 0; i < TILE_SIZE; i++)
-                {
-                    for (int j = 0; j < TILE_SIZE; j++)
-                    {
-                        mlx_pixel_put(vars->mlx, vars->win, x * TILE_SIZE + i, y * TILE_SIZE + j, 0xFFFF00); // Yellow color for collectibles
-                    }
-                }
+                mlx_put_image_to_window(vars->mlx, vars->win, vars->collectibles, x * TILE_SIZE, y * TILE_SIZE);
             }
             // Draw door ('E') at its position in blue
             else if (vars->map[y][x] == 'E')
             {
-                for (int i = 0; i < TILE_SIZE; i++)
-                {
-                    for (int j = 0; j < TILE_SIZE; j++)
-                    {
-                        mlx_pixel_put(vars->mlx, vars->win, x * TILE_SIZE + i, y * TILE_SIZE + j, 0x0000FF); // Blue color for door
-                    }
-                }
+                mlx_put_image_to_window(vars->mlx, vars->win, vars->door, x * TILE_SIZE, y * TILE_SIZE);
             }
             // Draw open spaces ('0') in black
             else if (vars->map[y][x] == '0')
             {
-                for (int i = 0; i < TILE_SIZE; i++)
-                {
-                    for (int j = 0; j < TILE_SIZE; j++)
-                    {
-                        mlx_pixel_put(vars->mlx, vars->win, x * TILE_SIZE + i, y * TILE_SIZE + j, 0x000000); // Black color for open spaces
-                    }
-                }
+                mlx_put_image_to_window(vars->mlx, vars->win, vars->game_bg, x * TILE_SIZE, y * TILE_SIZE);
             }
         }
     }
 }
-
-
-// Function to initialize collectibles in random positions
-// void initialize_collectibles(t_var *vars)
-// {
-//     // Seed the random number generator with the current time
-//     srand(time(NULL));
-
-//     // Place collectibles ('C') in random positions on the map
-//     for (int i = 0; i < NUM_COLLECTIBLES; i++)
-//     {
-//         int rand_x, rand_y;
-//         do
-//         {
-//             rand_x = rand() % MAP_WIDTH;
-//             rand_y = rand() % MAP_HEIGHT;
-//         } while (vars->map[rand_y][rand_x] != '0'); // Repeat if the chosen position is not an open space
-
-//         vars->map[rand_y][rand_x] = 'C';
-//     }
-// }
 
 // Function to handle key presses
 int key_press(int keycode, t_var *vars)
@@ -157,14 +120,14 @@ int key_press(int keycode, t_var *vars)
     int new_y = vars->player_y;
 
     // Handle key presses to move the player
-    if (keycode == 65363) // Right arrow key
-        new_x = (vars->player_x + 1) % MAP_WIDTH;
-    else if (keycode == 65361) // Left arrow key
-        new_x = (vars->player_x - 1 + MAP_WIDTH) % MAP_WIDTH;
-    else if (keycode == 65362) // Up arrow key
-        new_y = (vars->player_y - 1 + MAP_HEIGHT) % MAP_HEIGHT;
-    else if (keycode == 65364) // Down arrow key
-        new_y = (vars->player_y + 1) % MAP_HEIGHT;
+    if (keycode == KEY_RIGHT)
+        new_x++;
+    else if (keycode == KEY_LEFT)
+        new_x--;
+    else if (keycode == KEY_UP)
+        new_y--;
+    else if (keycode == KEY_DOWN)
+        new_y++;
 
     // Check if the new position is an open space ('0'), a collectible ('C'), or a door ('E')
     if (vars->map[new_y][new_x] == '0' || vars->map[new_y][new_x] == 'C' || vars->map[new_y][new_x] == 'E')
@@ -172,27 +135,24 @@ int key_press(int keycode, t_var *vars)
         // If it's a collectible, remove it from the map
         if (vars->map[new_y][new_x] == 'C')
         {
+            vars->collectibles_remaining--;
             vars->map[new_y][new_x] = '0';
-            vars->collectibles_remaining++;
         }
 
         // Update the player's position
         vars->player_x = new_x;
         vars->player_y = new_y;
 
-        mlx_clear_window(vars->mlx, vars->win);
-        background_img(vars->mlx, vars->win);
         draw_map(vars);
 
         // Check if all collectibles have been collected and the player is at the door, exit the game
-        if (vars->collectibles_remaining ==  vars->map[new_y][new_x] == 'E')
+        if (vars->collectibles_remaining == 0 && vars->map[new_y][new_x] == 'E')
         {
             fprintf(stderr, "Congratulations! You collected all collectibles and exited the game.\n");
             exit(0);
         }
     }
-
-    return (0);
+    return(0);
 }
 
 int main()
@@ -208,30 +168,25 @@ int main()
     }
 
     vars.mlx = mlx_init();
-    vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, "My window");
+    vars.win = mlx_new_window(vars.mlx,  TILE_SIZE * MAP_WIDTH,TILE_SIZE * MAP_HEIGHT, "My window");
     int width, height;
-    vars.user_img = mlx_xpm_file_to_image(vars.mlx, "images/player.xpm", &width, &height);
+    vars.user_img = mlx_xpm_file_to_image(vars.mlx, "images/player4.xpm", &width, &height);
+    vars.game_bg = mlx_xpm_file_to_image(vars.mlx, "images/gamebg2.xpm", &width, &height);
+    vars.door = mlx_xpm_file_to_image(vars.mlx, "images/door2.xpm", &width, &height);
+    vars.collectibles = mlx_xpm_file_to_image(vars.mlx, "images/collect.xpm", &width, &height);
     vars.wall_img = mlx_xpm_file_to_image(vars.mlx, "images/wall1_2_.xpm", &width, &height); // Added for the wall image
     vars.player_x = 1; // Initial X position of the player
-    vars.player_y = 1; // Initial Y position of the player
-    vars.collectibles_remaining = 0; // Initialize collectibles count
+    vars.player_y = 2; // Initial Y position of the player
+    vars.collectibles_remaining = 8; // Initialize collectibles count
 
     for (int i = 0; i < MAP_HEIGHT; i++)
     {
         for (int j = 0; j < MAP_WIDTH; j++)
         {
             fscanf(file, " %c", &vars.map[i][j]);
-        //     if (vars.map[i][j] == 'C')
-        //     {
-        //         vars.collectibles_remaining++;
-        //     }
         }
     }
-
     fclose(file);
-
-    // Initialize collectibles in random positions
-    //initialize_collectibles(&vars);
 
     mlx_hook(vars.win, 2, 1L << 0, key_press, &vars);
 
@@ -239,7 +194,6 @@ int main()
     draw_map(&vars);
 
     mlx_loop(vars.mlx);
-    mlx_destroy_image(vars.mlx, vars.user_img);
-    mlx_destroy_image(vars.mlx, vars.wall_img);
     return 0;
 }
+

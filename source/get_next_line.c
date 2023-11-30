@@ -1,49 +1,4 @@
-#include "so_long.h"
-#include <fcntl.h> 
-
-static int	ft_nbrlen(int n)
-{
-	int	i;
-
-	i = 0;
-	if (n <= 0)
-		i = 1;
-	while (n)
-	{
-		n /= 10;
-		++i;
-	}
-	return (i);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*str;
-	int		len;
-
-	len = ft_nbrlen(n);
-	str = calloc(len + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	if (n == 0)
-		str[0] = '0';
-	if (n < 0)
-	{
-		str[0] = '-';
-		if (n == INT_MIN)
-		{
-			str[--len] = '8';
-			n /= 10;
-		}
-		n = -n;
-	}
-	while (len-- && n != 0)
-	{
-		str[len] = (n % 10) + '0';
-		n /= 10;
-	}
-	return (str);
-}
+#include "../so_long.h"
 
 char	*buffer_total_clear(int fd, char **buffer, char *line)
 {
@@ -66,7 +21,7 @@ int	line_updater(char **line, char buffer[])
 	int		i;
 
 	join = ft_strjoinm(*line, buffer);
-	free(*line);                                  
+	free(*line);
 	if (join == NULL)
 		return (-1);
 	*line = join;
@@ -144,32 +99,6 @@ void	buffer_clear(char *buffer)
 	}
 }
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	size_t	tot_size;
-	void	*dst;
-
-	tot_size = size * count;
-	dst = malloc(tot_size);
-	if (!dst)
-		return (0);
-	ft_memset(dst, 0, tot_size);
-	return (dst);
-}
-
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		((unsigned char *)b)[i] = c;
-		i++;
-	}
-	return (b);
-}
-
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
@@ -192,7 +121,6 @@ char	*get_next_line(int fd)
 		}
 		flag = line_updater(&line, buffer);
 		buffer_clear(buffer);
-		
 		if (flag == 1)
 			return (line);
 		if (flag == -1)

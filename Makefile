@@ -4,7 +4,7 @@ CC 		= gcc
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-SRCS 	= ./source/ft_check_door.c ./source/ft_display.c ./source/ft_init_loop.c ./source/ft_render_map.c ./source/ft_printf.c ./source/get_next_line.c ./source/ft_check_collectables.c
+SRCS 	= ./source/check_path.c ./source/end_screen.c ./source/generate_map_array.c ./source/map_printer.c ./source/movements.c ./source/get_next_line.c ./source/get_next_line_utils.c ./source/ft_init_loop.c ./source/errors.c ./utils/ft_itoa.c ./utils/ft_split.c ./utils/ft_strlen.c ./utils/ft_strjoinfree.c ./utils/ft_strnstr.c ./utils/ft_putchar_lenght.c ./utils/ft_strncmp.c ./utils/ft_memcpy.c ./source/map_initializer.c ./source/read_player_and_collect.c
 
 OBJS    = $(SRCS:.c=.o)
 

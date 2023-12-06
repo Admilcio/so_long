@@ -1,103 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ada-mata <ada-mata@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 14:44:22 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/10/26 18:37:56 by ada-mata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
 #include "../so_long.h"
-
-char	*buffer_total_clear(int fd, char **buffer, char *line)
-{
-	size_t	i;
-
-	if (fd >= 0 && fd < FOPEN_MAX)
-	{
-		i = 0;
-		while (buffer && buffer[fd][i] && i < BUFFER_SIZE)
-			buffer[fd][i++] = '\0';
-	}
-	if (line)
-		free(line);
-	return (NULL);
-}
-
-int	line_updater(char **line, char buffer[])
-{
-	char	*join;
-	int		i;
-
-	join = ft_strjoinm(*line, buffer);
-	free(*line);
-	if (join == NULL)
-		return (-1);
-	*line = join;
-	i = 0;
-	while ((*line)[i] != '\0')
-	{
-		if ((*line)[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_strlenm(char const *s1)
-{
-	int	i;
-
-	if (s1 == NULL)
-		return (0);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		if (s1[i] == '\n')
-			return (i + 1);
-		i++;
-	}
-	return (i);
-}
-
-char	*ft_strjoinm(char const *s1, char const *s2)
-{
-	char	*s3;
-	int		j;
-	int		i;
-
-	s3 = (char *)malloc(ft_strlenm(s1) + ft_strlenm(s2) + 1);
-	if (!s3)
-		return (s3);
-	j = 0;
-	i = 0;
-	while (s1 != NULL && s1[i] != '\0')
-		s3[j++] = s1[i++];
-	i = 0;
-	while (s2 != NULL && s2[i] != '\0')
-	{
-		s3[j++] = s2[i++];
-		if (s2[i - 1] == '\n')
-			break ;
-	}
-	s3[j] = '\0';
-	return (s3);
-}
-
-void	buffer_clear(char *buffer)
-{
-	int	buffer_len;
-	int	nr_cases;
-	int	i;
-
-	buffer_len = 0;
-	while (buffer[buffer_len] != '\0')
-		buffer_len++;
-	nr_cases = ft_strlenm(buffer);
-	i = 0;
-	while (i < buffer_len)
-	{
-		if (nr_cases + i < buffer_len)
-		{
-			buffer[i] = buffer[nr_cases + i];
-			buffer[nr_cases + i] = '\0';
-		}
-		else
-			buffer[i] = '\0';
-		i++;
-	}
-}
+#include <fcntl.h> 
 
 char	*get_next_line(int fd)
 {
@@ -121,9 +36,32 @@ char	*get_next_line(int fd)
 		}
 		flag = line_updater(&line, buffer);
 		buffer_clear(buffer);
+		
 		if (flag == 1)
 			return (line);
 		if (flag == -1)
 			return (NULL);
 	}
 }
+/*
+int	main(void)
+{
+	char	*line;
+	int		fd1;
+
+	fd1 = open("texto", O_RDONLY);
+	//printf("line: %d", fd1);
+	if (fd1 == -1)
+	{
+		perror("Error opening file");
+		return (1);
+	}
+	while ((line = get_next_line(fd1)) != NULL) {
+	  printf("line: %s\n", line);
+		free(line);
+	}    
+	close(fd1);
+
+	//printf("FOPEN_MAX = %d\n",FOPEN_MAX);
+	return (0);
+} */

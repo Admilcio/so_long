@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   end_screen.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ada-mata <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/08 13:31:35 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/12/08 13:31:38 by ada-mata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
 int	ft_free_array(char **ret, int i)
@@ -32,10 +44,10 @@ int	ft_close(t_map *map)
 void	ft_win(t_map *map)
 {
 	map->exit = 1;
-	map->moves++;
 	mlx_clear_window(map->mlx, map->wnd);
 	mlx_string_put(map->mlx, map->wnd,
 		map->x / 2 * IMG_PXL, map->y / 2 * IMG_PXL, 0xFFFA9E, "YOU WON");
+	ft_free_array(map->array, map->y);
 	write(1, "\n", 1);
 	write(1, "\x1b[32;01m", 9);
 	write(1, "🏆🏆YOU WON!!🏆🏆\n", 27);

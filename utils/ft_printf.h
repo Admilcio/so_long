@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ada-mata <ada-mata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 14:45:01 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/12/08 16:19:35 by ada-mata         ###   ########.fr       */
+/*   Created: 2023/10/16 12:05:39 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/10/16 12:12:51 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
-
-# include <stdlib.h>
-
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <unistd.h>
+# include <stdlib.h>
 # include <stdio.h>
+# include <string.h>
+# include <limits.h>
+# include <stdarg.h>
 
-char	*get_next_line(int fd);
+void		ft_putchar_lenght(char c, int *len);
+void		ft_putstr(char *args, int *len);
 
-/* UTILS */
+void		ft_putnbr(int number, int *len);
+void		ft_hexadecimal(unsigned int n, int *len, char x_or_X);
+void		ft_pointer(size_t pointer, int *len);
+void		ft_unsigned_int(unsigned int u, int *len);
 
-int		line_updater(char **line, char buffer[]);
-int		ft_strlenm(char const *s1);
-char	*ft_strjoinm(char const *s1, char const *s2);
-void	buffer_clear(char *buffer);
-char	*buffer_total_clear(int fd, char **buffer, char *line);
+int			ft_printf(const char *fmt, ...);
 
-/* END OF UTILS */
-
-#endif /* GET_NEXT_LINE_H */
+#endif

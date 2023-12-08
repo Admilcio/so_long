@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ada-mata <ada-mata@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/08 13:33:46 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/12/08 15:45:40 by ada-mata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../so_long.h"
 
@@ -8,15 +19,6 @@ void	error_filename(void)
 	exit(EXIT_FAILURE);
 }
 
-void	error_wall(t_map *map)
-{
-	write(2, "\033[1;31m🛑ERROR: ", 19);
-	write(2, "failed wall\n\033[0m", 17);
-	ft_free_array(map->array, map->y);
-	ft_free_array(map->copy, map->y);
-	exit(EXIT_FAILURE);
-}
-
 void	error_openfile(void)
 {
 	write(2, "\033[1;31m🛑ERROR: ", 19);
@@ -24,10 +26,10 @@ void	error_openfile(void)
 	exit(EXIT_FAILURE);
 }
 
-void	error_size(t_map *map)
+void	error_map(t_map *map)
 {
 	write(2, "\033[1;31m🛑ERROR: ", 19);
-	write(2, "failed size\n\033[0m", 17);
+	write(2, "Map not Viable\n\033[0m", 17);
 	ft_free_array(map->array, map->y);
 	ft_free_array(map->copy, map->y);
 	exit(EXIT_FAILURE);
@@ -36,7 +38,7 @@ void	error_size(t_map *map)
 void	error_map_elements(t_map *map)
 {
 	write(2, "\033[1;31m🛑ERROR: ", 19);
-	write(2, "failed elements\n\033[0m", 21);
+	write(2, "failed number of elements\n\033[0m", 30);
 	ft_free_array(map->array, map->y);
 	ft_free_array(map->copy, map->y);
 	exit(EXIT_FAILURE);

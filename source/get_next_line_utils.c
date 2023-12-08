@@ -6,7 +6,7 @@
 /*   By: ada-mata <ada-mata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:45:45 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/10/26 15:46:59 by ada-mata         ###   ########.fr       */
+/*   Updated: 2023/12/08 14:09:27 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	line_updater(char **line, char buffer[])
 	int		i;
 
 	join = ft_strjoinm(*line, buffer);
-	free(*line);                                  
+	free(*line);
 	if (join == NULL)
 		return (-1);
 	*line = join;

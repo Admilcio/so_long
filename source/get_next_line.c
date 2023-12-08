@@ -6,7 +6,7 @@
 /*   By: ada-mata <ada-mata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:44:22 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/10/26 18:37:56 by ada-mata         ###   ########.fr       */
+/*   Updated: 2023/12/08 14:08:39 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,9 @@ char	*get_next_line(int fd)
 		}
 		flag = line_updater(&line, buffer);
 		buffer_clear(buffer);
-		
 		if (flag == 1)
 			return (line);
 		if (flag == -1)
 			return (NULL);
 	}
 }
-/*
-int	main(void)
-{
-	char	*line;
-	int		fd1;
-
-	fd1 = open("texto", O_RDONLY);
-	//printf("line: %d", fd1);
-	if (fd1 == -1)
-	{
-		perror("Error opening file");
-		return (1);
-	}
-	while ((line = get_next_line(fd1)) != NULL) {
-	  printf("line: %s\n", line);
-		free(line);
-	}    
-	close(fd1);
-
-	//printf("FOPEN_MAX = %d\n",FOPEN_MAX);
-	return (0);
-} */

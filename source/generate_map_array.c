@@ -1,30 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generate_map_array.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ada-mata <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/08 14:07:24 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/12/08 14:07:28 by ada-mata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
-void map_array(t_map *map)
+void	map_array(t_map *map)
 {
-	int fd;
+	int		fd;
 
-	map->line = NULL;  // Initialize map->line to NULL
+	map->line = NULL;
 	map->file = NULL;
 	fd = open(map->filename, O_RDONLY);
 	if (fd == -1)
 		error_openfile();
-	while ((map->line = get_next_line(fd)))
+	map->line = get_next_line(fd);
+	while (map->line)
 	{
 		map->file = ft_strjoinfree(map->file, map->line);
-        map->x = ft_strlen(map->line);
+		map->x = ft_strlen(map->line);
 		free(map->line);
+		map->line = get_next_line(fd);
 		if (!map->file)
 			ft_exit_free(map);
-		map->y++;	
+		map->y++;
 	}
-	printf("%d\n", map->y);
-	printf("%d\n", map->x); 
 	close(fd);
-
-	// Split the file content into arrays
 	map->array = ft_split(map->file, '\n');
-	map->copy = ft_split(map->file, '\n');
+	map->copy = ft_split(map->file, '\n'); 
 	if (!map->array || !map->copy)
 		ft_exit_free(map);
 	free(map->file);

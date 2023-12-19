@@ -50,7 +50,7 @@ int	handle_player_movement(int keycode, t_map *map)
 		map->player_moving = 1;
 	}
 	else if (keycode == ESC)
-		exit(0);
+		ft_close(map);
 	return (move_player_and_check(map, new_x, new_y));
 }
 

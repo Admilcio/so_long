@@ -47,9 +47,6 @@ void	initialize_accessible_array(t_map *map)
 	int		i;
 	int		j;
 
-	map->accessible = malloc(map->height * sizeof(int *));
-	if(!map->accessible)
-		return ;
 	i = 0;
 	while (++i < map->height)
 	{

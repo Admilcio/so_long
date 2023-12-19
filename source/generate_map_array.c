@@ -34,8 +34,7 @@ void	map_array(t_map *map)
 	}
 	close(fd);
 	map->array = ft_split(map->file, '\n');
-	map->copy = ft_split(map->file, '\n'); 
-	if (!map->array || !map->copy)
+	if (!map->array)
 		ft_exit_free(map);
 	free(map->file);
 	read_player_and_collectibles(map);

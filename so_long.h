@@ -46,11 +46,6 @@ typedef struct s_img
 	void	*exit;
 	void	*player_left1;
 	void	*player_right1;
-	void	*player_up1;
-	void	*player_down1;
-	void	*player_right2;
-	void	*player_up2;
-	void	*player_down2;
 }t_img;
 
 typedef struct s_map
@@ -59,7 +54,6 @@ typedef struct s_map
 	char		*line;
 	char		*file;
 	char		**array;
-	char		**copy;
 	char		**accessible;
 	char		*filename;
 	int			y;

@@ -72,5 +72,3 @@ int	main(int ac, char **av)
 	ft_close(&map);
 	return (0);
 }
-
-//cc main.c so_long.a mlx/libmlx.a -lXext -lX11 -g

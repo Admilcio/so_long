@@ -92,11 +92,6 @@ Deve conter pelo menos uma saída 'E', um coletável 'C' e apenas um jogador 'P'
 Pode conferir alguns exemplos na pasta /assets/maps desse projeto. 
 	
 Como assets/maps/valid/map2.ber:
-
-Esse arquivo .ber gera esse mapa:
-    
-    
-<img src="https://user-images.githubusercontent.com/81205527/174420150-0ee15e42-c7c3-4854-936b-fffaf13683c2.png">
 	
 <h3 id="controles" align="center"> Controles </h3>   
     

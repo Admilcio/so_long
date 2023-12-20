@@ -139,18 +139,7 @@ Para testar o código desse repositório:
     
 Clone o repositório e entre nele:
     
-    git clone https://github.com/augustobecker/so_long so_long
-  
-    cd so_long/
-
-Agora, clone o so_long Tester do @augustobecker:
-    
-    git clone https://github.com/augustobecker/so_long_tester so_long_tester
- 
-Entre na pasta do Tester e rode com make:
-    
-    cd so_long_tester
-    make
+    git clone https://github.com/https://github.com/Admilcio/So_Long42
 
 Se você fez tudo corretamente, deve ver algo como isso:
 
@@ -168,16 +157,9 @@ O passo final no processo é a Piscina - parte parte do processo seletivo que re
 Não é necessário experiência anterior em programação.
     
 Você pode conferir mais sobre o processo de admissão no site da 42sp: https://www.42sp.org.br
-    
-ou no meu repositório do github: <a href="https://github.com/augustobecker/42sp_Piscine">42 Piscine</a>
-
-Para ver outros projetos da 42 desenvolvidos por mim, clique aqui: <a href="https://github.com/augustobecker/42cursus">42 Cursus </a>
 
 <h2  align="center" id="autor">Autor</h2>
 <div align="center">
-	<div>
-	<img height="222em" src="https://user-images.githubusercontent.com/81205527/174709160-f4bc029d-b667-469b-b2a7-4e036f1c5349.png">
-	</div>
 	<div>
 		<strong> Admilcio da Mata</strong>
 	

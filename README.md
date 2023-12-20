@@ -55,11 +55,11 @@ Para jogar, primeiro compile o projeto com make
 	
 Então, execute o ./so_long seguido do mapa que você quer jogar:
 	
-	./so_long assets/maps/valid/map2.ber	
+	./so_long source/maps/map.ber	
 
 Compiler:
 
-	gcc main.c so_long.a minilibx-linux/libmlx.a -lXext -lX11 -g
+	./so_long maps/map.ber
 	
 <h3 id="mapas" align="center"> Mapas </h3>   
 Qualquer mapa que você passar pode servir de input para o jogo, isso se respeitar as regras abaixo:

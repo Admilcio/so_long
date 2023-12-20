@@ -1,6 +1,6 @@
 <h1 align="center"> so_long - @42lisboa </h1>
 
-![This is a simple demostration of the game](https://github.com/Admilcio/So_Long42/blob/master/so_long.png?raw=true)
+<p align="center">![This is a simple demostration of the game](https://github.com/Admilcio/So_Long42/blob/master/so_long.png?raw=true)</p>
 
 <p align="center">:information_source: Um pequeno jogo 2D feito utilizando a Biblioteca Gráfica MiniLibX - Texturas, sprites e tiles incluídos. </p>
 

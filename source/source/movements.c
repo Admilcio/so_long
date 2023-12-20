@@ -57,8 +57,7 @@ int	handle_player_movement(int keycode, t_map *map)
 int	movement(int keycode, t_map *map)
 {
 	mlx_clear_window(map->mlx, map->wnd);
-	if (handle_player_movement(keycode, map) == 1)
-		return (1);
+	handle_player_movement(keycode, map);
 	draw_map(map);
 	return (0);
 }

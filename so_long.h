@@ -13,7 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx-linux/mlx.h"
+# include "mlx/mlx.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>

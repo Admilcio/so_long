@@ -39,6 +39,7 @@ void	initialize_functions(t_map *map)
 {
 	mlx_hook(map->wnd, 2, 1L << 0, movement, map);
 	mlx_hook(map->wnd, 3, 1L << 1, key_release, map);
+	mlx_hook(map->wnd, 17, 1L << 17, ft_close, map);
 	draw_map(map);
 	mlx_loop(map->mlx);
 }
@@ -52,15 +53,17 @@ int	main(int ac, char **av)
 	{
 		map_initializer(&map, av);
 		map_array(&map);
-		map.mlx = mlx_init();
-		map.wnd = mlx_new_window(map.mlx, map.x
-				* IMG_PXL, map.y * IMG_PXL, WND_NAME);
 		player.x = map.player.x;
 		player.y = map.player.y;
-		initialize_map_images(&map);
 		if (all_c_accessible(map.array, map.y, map.x, player) 
 			&& is_map_viable(map.array, map.y, map.x))
+		{
+			map.mlx = mlx_init();
+			map.wnd = mlx_new_window(map.mlx, map.x * IMG_PXL, map.y * IMG_PXL,
+					WND_NAME);
+			initialize_map_images(&map);
 			initialize_functions(&map);
+		}
 		else
 			error_map(&map);
 	}
@@ -69,3 +72,5 @@ int	main(int ac, char **av)
 	ft_close(&map);
 	return (0);
 }
+
+//cc main.c so_long.a mlx/libmlx.a -lXext -lX11 -g

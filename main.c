@@ -69,5 +69,4 @@ int	main(int ac, char **av)
 	ft_close(&map);
 	return (0);
 }
-
 //gcc main.c so_long.a minilibx-linux/libmlx.a -lXext -lX11 -g

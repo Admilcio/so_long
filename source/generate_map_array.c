@@ -12,16 +12,13 @@
 
 #include "../so_long.h"
 
-void	map_array(t_map *map)
+static int	check_extension(const char *filename)
 {
-	int		fd;
+	return (ft_strstr(filename, ".ber") != NULL);
+}
 
-	map->line = NULL;
-	map->file = NULL;
-	fd = open(map->filename, O_RDONLY);
-	if (fd == -1)
-		error_openfile();
-	map->line = get_next_line(fd);
+static void	read_file_lines(t_map *map, int fd)
+{
 	while (map->line)
 	{
 		map->file = ft_strjoinfree(map->file, map->line);
@@ -32,6 +29,21 @@ void	map_array(t_map *map)
 			ft_exit_free(map);
 		map->y++;
 	}
+}
+
+void	map_array(t_map *map)
+{
+	int	fd;
+
+	map->line = NULL;
+	map->file = NULL;
+	if (!check_extension(map->filename))
+		error_filename();
+	fd = open(map->filename, O_RDONLY);
+	if (fd == -1)
+		error_openfile();
+	map->line = get_next_line(fd);
+	read_file_lines(map, fd);
 	close(fd);
 	map->array = ft_split(map->file, '\n');
 	if (!map->array)

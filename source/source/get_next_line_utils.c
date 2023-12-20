@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../so_long.h"
+#include "../../so_long.h"
 
 char	*buffer_total_clear(int fd, char **buffer, char *line)
 {

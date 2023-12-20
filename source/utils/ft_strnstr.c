@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ada-mata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:26:46 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/10/03 15:01:18 by ada-mata         ###   ########.fr       */
+/*   Created: 2023/12/08 16:07:25 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/12/08 16:07:28 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
+	size_t	needlelen;
 
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	while (i < n)
+	needlelen = ft_strlen(needle);
+	if (!needle)
+		return ((char *)haystack);
+	while (*haystack && len > needlelen
+		&& ft_strncmp(haystack, needle, needlelen))
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
+		haystack++;
+		len--;
 	}
-	return (dest);
+	if (len >= needlelen && !ft_strncmp(haystack, needle, needlelen))
+		return ((char *)haystack);
+	return (NULL);
 }

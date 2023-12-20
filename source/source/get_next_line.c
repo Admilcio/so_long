@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "../so_long.h"
+#include "../../so_long.h"
 #include <fcntl.h> 
 
 char	*get_next_line(int fd)

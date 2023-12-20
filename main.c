@@ -18,21 +18,21 @@ void	initialize_map_images(t_map *map)
 	int		height;
 
 	map->img.wall = mlx_xpm_file_to_image(map->mlx,
-			"images/wall1_2_.xpm", &width, &height);
+			"source/images/wall1_2_.xpm", &width, &height);
 	map->img.collectible = mlx_xpm_file_to_image(map->mlx,
-			"images/collect.xpm", &width, &height);
+			"source/images/collect.xpm", &width, &height);
 	map->img.empty = mlx_xpm_file_to_image(map->mlx,
-			"images/gamebg2.xpm", &width, &height);
+			"source/images/gamebg2.xpm", &width, &height);
 	map->img.exit = mlx_xpm_file_to_image(map->mlx,
-			"images/door-close.xpm", &width, &height);
+			"source/images/door-close.xpm", &width, &height);
 	map->img.player_left1 = mlx_xpm_file_to_image(map->mlx,
-			"images/player/back.xpm", &width, &height);
+			"source/images/player/back.xpm", &width, &height);
 	map->player_frames[0] = mlx_xpm_file_to_image(map->mlx,
-			"images/player/player02.xpm", &width, &height);
+			"source/images/player/player02.xpm", &width, &height);
 	map->player_frames[1] = mlx_xpm_file_to_image(map->mlx,
-			"images/player/player01.xpm", &width, &height);
+			"source/images/player/player01.xpm", &width, &height);
 	map->player_frames[2] = mlx_xpm_file_to_image(map->mlx,
-			"images/player/player4.xpm", &width, &height);
+			"source/images/player/player4.xpm", &width, &height);
 }
 
 void	initialize_functions(t_map *map)

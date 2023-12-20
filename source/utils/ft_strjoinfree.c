@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ada-mata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 16:09:29 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/12/08 16:09:31 by ada-mata         ###   ########.fr       */
+/*   Created: 2023/12/08 16:08:38 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/12/08 16:08:40 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strjoinfree(char *s1, char *s2)
 {
-	int	i;
+	char	*str;
+	size_t	s1len;
+	size_t	s2len;
 
-	i = 0;
+	if (!s1)
+	{
+		s1 = (char *)malloc(sizeof(char));
+		s1[0] = '\0';
+	}
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	str = malloc(sizeof(char) * (s1len + s2len + 1));
 	if (!str)
-		return (0);
-	while (str[i] != '\0')
-		++i;
-	return (i);
+		return (NULL);
+	ft_memcpy(str, s1, s1len);
+	ft_memcpy(str + s1len, s2, s2len + 1);
+	str[s1len + s2len] = '\0';
+	free(s1);
+	return (str);
 }

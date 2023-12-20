@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
 void	open_door(t_map *map)
 {
@@ -21,7 +21,7 @@ void	open_door(t_map *map)
 	{
 		mlx_destroy_image(map->mlx, map->img.exit);
 		map->img.exit = mlx_xpm_file_to_image(map->mlx, 
-				"images/door-open.xpm", &width, &height);
+				"source/images/door-open.xpm", &width, &height);
 		draw_map(map);
 	}
 }

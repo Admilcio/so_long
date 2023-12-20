@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_lenght.c                                :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ada-mata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 16:09:11 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/12/08 16:09:13 by ada-mata         ###   ########.fr       */
+/*   Created: 2023/10/03 13:26:46 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/10/03 15:01:18 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-void	ft_putchar_lenght(char c, int *len)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	write(1, &c, 1);
-	(*len)++;
+	size_t	i;
+
+	if (!dest && !src)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dest);
 }

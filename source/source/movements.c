@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
 int	move_player_and_check(t_map *map, int new_x, int new_y)
 {
@@ -33,17 +33,17 @@ int	handle_player_movement(int keycode, t_map *map)
 
 	new_x = map->player.x;
 	new_y = map->player.y;
-	if (keycode == UP)
+	if (keycode == UP || keycode == W)
 		new_y--;
-	else if (keycode == DOWN)
+	else if (keycode == DOWN || keycode == S)
 		new_y++;
-	else if (keycode == LEFT)
+	else if (keycode == LEFT || keycode == A)
 	{
 		new_x--;
 		start_animation(map);
 		map->player_moving = 2;
 	}
-	else if (keycode == RIGHT)
+	else if (keycode == RIGHT || keycode == D)
 	{
 		new_x++;
 		start_animation(map);

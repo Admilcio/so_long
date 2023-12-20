@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ada-mata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 16:07:25 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/12/08 16:07:28 by ada-mata         ###   ########.fr       */
+/*   Created: 2023/12/20 12:57:29 by ada-mata          #+#    #+#             */
+/*   Updated: 2023/12/20 12:58:09 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	size_t	needlelen;
+	size_t	needle_len;
 
-	needlelen = ft_strlen(needle);
-	if (!needle)
+	if (*needle == '\0')
 		return ((char *)haystack);
-	while (*haystack && len > needlelen
-		&& ft_strncmp(haystack, needle, needlelen))
+	needle_len = ft_strlen(needle);
+	while (*haystack)
 	{
+		if (ft_strncmp(haystack, needle, needle_len) == 0)
+			return ((char *)haystack);
 		haystack++;
-		len--;
 	}
-	if (len >= needlelen && !ft_strncmp(haystack, needle, needlelen))
-		return ((char *)haystack);
 	return (NULL);
 }

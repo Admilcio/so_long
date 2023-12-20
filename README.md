@@ -51,17 +51,13 @@ Para jogar, primeiro compile o projeto com make
 
 	make
 	
-Ou caso queira jogar a versão com bônus:
-
-	make bonus
-	
 Então, execute o ./so_long seguido do mapa que você quer jogar:
 	
 	./so_long assets/maps/valid/map2.ber	
 
-Para o bônus seria:
-	
-	./so_long_bonus assets/maps/valid/map2.ber
+Compiler:
+
+	gcc main.c so_long.a minilibx-linux/libmlx.a -lXext -lX11 -g
 	
 <h3 id="mapas" align="center"> Mapas </h3>   
 Qualquer mapa que você passar pode servir de input para o jogo, isso se respeitar as regras abaixo:

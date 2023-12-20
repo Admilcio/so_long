@@ -1,6 +1,6 @@
 <h1 align="center"> so_long - @42lisboa </h1>
 
-<p align="center">![This is a simple demostration of the game](https://github.com/Admilcio/So_Long42/blob/master/so_long.png?raw=true)</p>
+![This is a simple demostration of the game](https://github.com/Admilcio/So_Long42/blob/master/so_long.png?raw=true)
 
 <p align="center">:information_source: Um pequeno jogo 2D feito utilizando a Biblioteca Gráfica MiniLibX - Texturas, sprites e tiles incluídos. </p>
 
@@ -136,7 +136,7 @@ Clone o repositório e entre nele:
 
 Se você fez tudo corretamente, deve ver algo como isso:
 
-![image](https://user-images.githubusercontent.com/81205527/179400332-9e80f631-7d46-464b-a0eb-e481b48ad6b4.png)
+![image](https://github.com/Admilcio/So_Long42/blob/master/so_long.png?raw=true)
     
 <h2 align="center" id="42-cursus"> 42 Cursus </h2>
     

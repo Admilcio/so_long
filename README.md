@@ -161,6 +161,6 @@ Você pode conferir mais sobre o processo de admissão no site da 42sp: https://
 :wave: Fale comigo: 
     	</div> 
     	<div>
-  	<a href="https://github.com/Admilcio" target="_blank"><img align="center" alt="LinkedIn" height="60" src="https://user-images.githubusercontent.com/81205527/157161849-01a9df02-bf32-45be-add4-122bc40b48cf.png"></a>
+  	<a href="https://www.linkedin.com/in/admilcio-da-mata-70498a217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><img align="center" alt="LinkedIn" height="60" src="https://user-images.githubusercontent.com/81205527/157161849-01a9df02-bf32-45be-add4-122bc40b48cf.png"></a>
 	<a href="https://www.instagram.com/supreme__addie/" target="_blank"><img align="center" alt="Instagram" height="60" src="https://user-images.githubusercontent.com/81205527/157161841-19ec3ab2-2c8f-4ec0-8b9d-3cd885256098.png"></a>
 </div>    	

@@ -1,6 +1,6 @@
 NAME    = so_long.a
 CC      = cc
-CFLAGS  = -Wall -Wextra -Werror 
+CFLAGS  = -Wall -Wextra -Werror -g 
 SRCS    = ./source/source/check_collectibles.c ./source/source/end_screen.c \
         ./source/source/check_border.c ./source/source/generate_map_array.c \
         ./source/source/map_printer.c ./source/source/movements.c \

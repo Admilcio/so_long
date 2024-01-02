@@ -69,3 +69,12 @@ void	ft_win(t_map *map)
 	write(1, "\x1b[0m", 5);
 	exit(EXIT_SUCCESS);
 }
+
+void	error_emptyfile(int fd)
+{
+	write(2, "\033[1;31m🛑ERROR: ", 19);
+	write(1, "Empty file.\n", 12);
+	write(1, "\x1b[0m", 5);
+	close(fd);
+	exit(EXIT_FAILURE);
+}

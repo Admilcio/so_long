@@ -81,8 +81,8 @@ typedef struct s_map
 void			error_openfile(void);
 void			error_filename(void);
 void			error_map(t_map *map);
-void			error_openfile(void);
 void			custom_delay(int microseconds);
+void 			error_emptyfile(int fd);
 char			*ft_strstr(const char *haystack, const char *needle);
 void			start_animation(t_map *map);
 void			error_map_elements(t_map *map);

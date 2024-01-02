@@ -43,6 +43,8 @@ void	map_array(t_map *map)
 	if (fd == -1)
 		error_openfile();
 	map->line = get_next_line(fd);
+	if(map->line == NULL)
+		error_emptyfile(fd);
 	read_file_lines(map, fd);
 	close(fd);
 	map->array = ft_split(map->file, '\n');

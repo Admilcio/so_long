@@ -16,12 +16,12 @@ SRCS    = ./source/source/check_collectibles.c ./source/source/end_screen.c \
 OBJS    = $(SRCS:.c=.o)
 PROGRAM = so_long
 
-all: $(NAME) program
+all: $(PROGRAM)
 
 $(NAME): $(OBJS)
 		ar rcs $(NAME) $(OBJS)
 
-program: $(NAME)
+$(PROGRAM): $(NAME)
 		$(CC) $(CFLAGS) -o $(PROGRAM) main.c $(NAME) mlx/libmlx.a -lXext -lX11
 
 clean:

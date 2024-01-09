@@ -30,6 +30,7 @@ void	error_map(t_map *map)
 {
 	write(2, "\033[1;31m🛑ERROR: ", 19);
 	write(2, "Map not Viable\n\033[0m", 17);
+	ft_free_array(map->array, map->y);
 	exit(EXIT_FAILURE);
 }
 

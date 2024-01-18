@@ -6,7 +6,7 @@
 /*   By: ada-mata <ada-mata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:54:33 by ada-mata          #+#    #+#             */
-/*   Updated: 2023/12/08 16:41:49 by ada-mata         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:17:08 by ada-mata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ int	main(int ac, char **av)
 		map_array(&map);
 		player.x = map.player.x;
 		player.y = map.player.y;
-		if (all_c_accessible(map.array, map.y, map.x, player) 
-			&& is_map_viable(map.array, map.y, map.x))
+		if (is_map_viable(map.array, map.y, map.x) && all_c_accessible(map.array, map.y, map.x, player))
 		{
 			map.mlx = mlx_init();
 			map.wnd = mlx_new_window(map.mlx, map.x * IMG_PXL, map.y * IMG_PXL,
@@ -68,7 +67,7 @@ int	main(int ac, char **av)
 			error_map(&map);
 	}
 	else
-		error_map_elements(&map);
+		error_openfile();
 	ft_close(&map);
 	return (0);
 }
